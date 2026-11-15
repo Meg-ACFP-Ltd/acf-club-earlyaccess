@@ -1,0 +1,13 @@
+name: Check copy punctuation
+on:
+  pull_request:
+  push:
+jobs:
+  copy-punctuation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prohibit long dashes in committed copy
+        run: python3 scripts/check_no_long_dash.py
